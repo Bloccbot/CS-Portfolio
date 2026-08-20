@@ -19,3 +19,35 @@ I approach development by breaking large projects into smaller tasks and complet
 ### What does it mean to be a good team member in software development?
 
 Being a good team member means communicating openly, collaborating with others, and taking responsibility for your work. It also means being willing to accept feedback, help teammates when needed, and stay flexible when priorities change. Throughout this course, I learned that successful software development depends on teamwork, accountability, and a shared commitment to delivering value to the customer.
+
+---
+
+# CS 230 – Operating Platforms
+
+## Portfolio Artifact
+
+**Artifact:** The Gaming Room Software Design Document
+
+The Gaming Room was the client for this project. They wanted to expand their Android game, *Draw It or Lose It*, into a web-based application that could support users on multiple operating platforms. The design needed to manage games, teams, and players while maintaining unique names and identifiers and considering storage, memory, networking, scalability, and security.
+
+## Reflection
+
+### What did I do particularly well in developing this documentation?
+
+I think I did well organizing the client's requirements and connecting them to specific design decisions. The document compares platform options and explains why Linux is a strong production server choice while still allowing players to use Windows, macOS, Linux, Android, and iOS through a browser.
+
+### What about the design document process was helpful when developing the code?
+
+Working through the design document helped me understand the structure of the application before focusing on implementation. The UML domain model and requirements made relationships between Game, Team, Player, Entity, and GameService easier to understand and helped clarify where patterns such as singleton and iterator fit into the design.
+
+### If I could revise one part of the document, what would I improve?
+
+I would continue improving the system architecture section by adding more detail about how the production database, server instances, and real-time communication would work together. That would make the transition from the prototype to a full production environment even clearer.
+
+### How did I interpret the user's needs and implement them into the software design? Why is this important?
+
+I focused on The Gaming Room's need to support multiple platforms without maintaining a separate version of the game for every device. A browser-based client with centralized server-side game logic addresses that requirement while also supporting consistent game state and security. Considering user needs is important because a technically sound design is not useful if it does not solve the client's actual problem.
+
+### How did I approach designing the software, and what would I use in the future?
+
+I approached the design by first identifying the client's requirements and constraints, then comparing platform options and connecting those findings to architecture, storage, memory, networking, and security decisions. For similar projects, I would continue using requirements analysis, UML modeling, platform comparisons, and incremental design reviews before moving too far into implementation.
