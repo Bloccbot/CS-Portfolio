@@ -8,6 +8,8 @@ The purpose of this portfolio is to document my progress throughout the program 
 
 * **CS 230 – Operating Platforms**
 * **CS 250 – Software Development Lifecycle**
+* **CS 255 – System Analysis and Design**
+
 
 Additional course projects will be added as I continue through the Computer Science program.
 
