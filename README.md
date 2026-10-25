@@ -9,6 +9,7 @@ The purpose of this portfolio is to document my progress throughout the program 
 * **CS 230 – Operating Platforms**
 * **CS 250 – Software Development Lifecycle**
 * **CS 255 – System Analysis and Design**
+* **CS 320 – Software Test, Automation, and Quality Assurance**
 
 
 Additional course projects will be added as I continue through the Computer Science program.
@@ -68,3 +69,35 @@ I approach development by breaking large projects into smaller tasks and complet
 ### What does it mean to be a good team member in software development?
 
 Being a good team member means communicating openly, collaborating with others, and taking responsibility for my work. It also means being willing to accept feedback, help teammates when needed, and stay flexible when priorities change. Throughout this course, I learned that successful software development depends on teamwork, accountability, and a shared commitment to delivering value to the customer.
+
+
+---
+
+# CS 320 – Software Test, Automation, and Quality Assurance
+
+## Portfolio Artifacts
+
+Project One demonstrates input validation and automated JUnit 5 tests for an in-memory contact service:
+
+* [Contact.java](CS320/ContactService/Contact.java)
+* [ContactService.java](CS320/ContactService/ContactService.java)
+* [ContactTest.java](CS320/ContactService/ContactTest.java)
+* [ContactServiceTest.java](CS320/ContactService/ContactServiceTest.java)
+
+Project Two evaluates the testing approach, results, strengths, and limitations across the contact, task, and appointment services:
+
+* [Summary and Reflections Report](CS320/CS320_Project_Two_Summary_and_Reflections_Eddie_Loya.docx)
+
+## Reflection
+
+### How can I ensure that my code, program, or software is functional and secure?
+
+I start by turning each requirement into a testable condition and checking both expected behavior and invalid input. In the contact service, my JUnit tests check field length boundaries, null values, phone number formatting, duplicate IDs, and updates and deletions by ID. Running the tests after changes helps catch regressions. I also use encapsulation and validation to protect object state, including keeping the contact ID immutable. Passing tests and high coverage increase confidence, but they do not prove that software is secure or free of defects. For a production application, I would add code review, dependency checks, authorization tests, and integration and security testing appropriate to the system.
+
+### How do I interpret user needs and incorporate them into a program?
+
+I break user needs into specific behaviors, constraints, and acceptance criteria before writing code. For example, the contact requirements define which fields can change, how long each field can be, and how contacts are identified. I incorporate those rules into the model and service, then write tests that verify them. Testing values at the exact limit and just beyond it helps me check that my interpretation matches the requirement. If a requirement is unclear, I would clarify the expected behavior with the user instead of making an assumption that could lead to the wrong result.
+
+### How do I approach designing software?
+
+I begin with the requirements and divide the program into small classes with clear responsibilities. In this project, Contact handles contact data and field validation, while ContactService manages storage and operations by unique ID. Keeping those responsibilities separate makes the code easier to understand, test, and maintain. I build incrementally and use automated tests to evaluate each behavior as it is added. The projects reinforced the value of planning for invalid inputs and edge cases early, while keeping the design focused on the actual scope of the application.
