@@ -11,6 +11,7 @@ The purpose of this portfolio is to document my progress throughout the program 
 * **CS 255 – System Analysis and Design**
 * **CS 320 – Software Test, Automation, and Quality Assurance**
 * **CS 305 – Software Security**
+* **CS 300 – Data Structures and Algorithms: Analysis and Design**
 
 
 Additional course projects will be added as I continue through the Computer Science program.
@@ -143,3 +144,47 @@ Java MessageDigest, keytool, Maven, JUnit, Spring Boot configuration, and OWASP 
 ### What could I show future employers from this assignment?
 
 I could show this report as evidence that I can connect a client's security requirements to implementation choices and verification results. It includes the checksum implementation, certificate and HTTPS evidence, passing test results, and a review of dependency findings. It also shows that I can explain the limits of a development demonstration and identify the work needed for production readiness. That combination demonstrates practical Java security skills, testing discipline, and the ability to communicate technical risk clearly.
+
+
+---
+
+# CS 300 – Data Structures and Algorithms Analysis and Design
+
+## Portfolio Artifacts
+
+* [Project One Pseudocode and Runtime Analysis](CS300/Project_One_Pseudocode_and_Runtime_Analysis.docx) — the completed design document, including runtime and memory comparisons for vectors, hash tables, and binary search trees.
+* [ProjectTwo.cpp](CS300/ProjectTwo.cpp) — the completed C++ advising program that loads course records, prints courses in alphanumeric order, and displays a course with its prerequisite titles.
+* [Course Data](CS300/CS_300_ABCU_Advising_Program_Input.csv) — the course-provided input used with the program.
+
+### Build and Run
+
+From the CS300 folder, compile with a C++17 compiler and run the program:
+
+```sh
+g++ -std=c++17 -Wall -Wextra -Wpedantic ProjectTwo.cpp -o course-planner
+./course-planner
+```
+
+Choose option 1 and enter `CS_300_ABCU_Advising_Program_Input.csv`. Option 2 prints the sorted course list, option 3 displays one course and its prerequisites, and option 9 exits. The program uses only standard C++ headers and does not require CSVParser or custom header files.
+
+## Reflection
+
+### What was the problem I was solving in the projects for this course?
+
+The projects focused on an advising program for ABCU that helps users review Computer Science courses and their prerequisites. Project One compared data structures and developed pseudocode for loading course records, validating prerequisites, searching for courses, and printing a sorted course list. Project Two implemented the design in C++. The finished program reads the supplied CSV file, prints courses in alphanumeric order, and displays a selected course with the numbers and titles of its prerequisites.
+
+### How did I approach the problem, and why are data structures important to understand?
+
+I started with the operations the program needed to support, then compared vectors, hash tables, and binary search trees in terms of runtime, memory, and ordering. I selected a hash table because course and prerequisite lookups are central to the advising task. In Project Two, an unordered_map stores courses by course number, while a temporary vector of pointers is sorted when the user requests the full list. This provides expected constant-time lookup and O(n log n) sorting without copying every course object. Understanding data structures helped me recognize the tradeoff between fast lookup and naturally ordered output, along with the worst-case behavior and memory overhead of each option.
+
+### How did I overcome roadblocks encountered during the activities or projects?
+
+One challenge was validating prerequisites when the referenced course appeared later in the file. I handled this by loading the records first and checking prerequisite references after the complete file had been read. The supplied CSV also includes blank prerequisite columns, so the implementation ignores those fields while still requiring a course number and title. Another concern was preventing an unsuccessful reload from damaging previously loaded data. I used a temporary hash table and replaced the active table only after validation succeeded. Testing duplicate records, missing prerequisites, malformed rows, failed file loads, and sorted output helped verify these decisions.
+
+### How has this work expanded my approach to designing software and developing programs?
+
+The projects encouraged me to evaluate the required operations before choosing a data structure. I now consider expected and worst-case runtime, memory use, input validation, and the frequency of each operation together. Moving from pseudocode to working code also showed me that a design needs to accommodate the actual input format, such as the CSV's empty prerequisite columns. I would continue separating planning, implementation, and verification while revisiting design assumptions when real data exposes a mismatch.
+
+### How has this work changed the way I write programs that are maintainable, readable, and adaptable?
+
+I organized the program into functions for CSV parsing, course loading, menu validation, sorted output, and course lookup. The Course structure keeps related information together, and descriptive names and focused comments explain the purpose of each operation. Consistent course-number normalization makes searches easier to use, while controlled error messages make invalid input easier to diagnose. Keeping data processing separate from menu handling makes future changes more manageable, such as adding a new output format or replacing the storage structure without rewriting the entire program.
