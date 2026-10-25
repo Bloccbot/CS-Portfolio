@@ -10,6 +10,7 @@ The purpose of this portfolio is to document my progress throughout the program 
 * **CS 250 – Software Development Lifecycle**
 * **CS 255 – System Analysis and Design**
 * **CS 320 – Software Test, Automation, and Quality Assurance**
+* **CS 305 – Software Security**
 
 
 Additional course projects will be added as I continue through the Computer Science program.
@@ -101,3 +102,44 @@ I break user needs into specific behaviors, constraints, and acceptance criteria
 ### How do I approach designing software?
 
 I begin with the requirements and divide the program into small classes with clear responsibilities. In this project, Contact handles contact data and field validation, while ContactService manages storage and operations by unique ID. Keeping those responsibilities separate makes the code easier to understand, test, and maintain. I build incrementally and use automated tests to evaluate each behavior as it is added. The projects reinforced the value of planning for invalid inputs and edge cases early, while keeping the design focused on the actual scope of the application.
+
+
+---
+
+# CS 305 – Software Security
+
+## Portfolio Artifact
+
+[Artemis Financial Practices for Secure Software Report](CS305/Artemis_Financial_Practices_for_Secure_Software_Report.docx)
+
+This completed Project Two report documents the SHA-256 checksum implementation, certificate generation, HTTPS configuration, functional testing, dependency analysis, and remaining security risks for the Artemis Financial application.
+
+## Reflection
+
+### Who was the client, Artemis Financial, and what issue did the company want to address?
+
+Artemis Financial is a financial consulting company that develops plans involving savings, retirement, investments, and insurance. The company needed to improve the security of its web application and protect information exchanged with clients. My project focused on adding a checksum for data integrity verification and configuring secure communication through HTTPS. The work also required reviewing software dependencies and documenting the controls still needed before a production release.
+
+### What did I do well when identifying vulnerabilities, and why does secure coding matter to a company's well-being?
+
+I did well combining manual code review with OWASP Dependency-Check instead of relying on either method alone. In Project One, I connected findings such as hardcoded database credentials, missing access controls, and unsafe balance calculations to specific code locations and proposed mitigations. I also distinguished dependency matches from confirmed, reachable vulnerabilities. Secure coding helps protect confidentiality, integrity, and availability. For a financial company, that supports accurate records, reliable service, customer trust, and reduced exposure to incident recovery costs.
+
+### Which part of the vulnerability assessment was challenging or helpful?
+
+The most challenging part was interpreting dependency findings in context. A CVE match does not establish that the affected feature is present, enabled, or reachable in the application. Checking versions, modules, and deployment conditions helped me prioritize issues without treating every scan result as an established exploit. The vulnerability assessment process flow was helpful because it organized the review across areas such as cryptography, APIs, client/server communication, error handling, code quality, input validation, and encapsulation.
+
+### How did I increase layers of security, and how would I assess vulnerabilities and choose mitigations in the future?
+
+I added SHA-256 checksum generation through Java MessageDigest, configured HTTPS on port 8443, and generated an RSA-backed X.509 development certificate in a PKCS12 keystore. The refactor also added defensive response headers, reduced error disclosure, and separated checksum generation from HTTP handling. These controls address different concerns: the checksum supports integrity verification, while HTTPS protects information in transit. In future work, I would combine dependency scanning, manual review, threat modeling, and security tests, then prioritize mitigations based on affected functionality, exposure, severity, and business impact. Production deployment would also require supported dependencies, a trusted certificate, managed secrets, authentication, and authorization.
+
+### How did I verify functionality and security after refactoring, and check for new vulnerabilities?
+
+I compiled and tested the refactored application with Maven. One test checked the exact expected SHA-256 digest for my personalized input, and another checked that the Spring application context loaded with the HTTPS configuration. Both tests passed, and I checked the HTTPS hash endpoint and certificate details. I then ran Dependency-Check and reviewed the results against the changes. The refactor added no third-party runtime library, but the inherited Spring Boot dependency baseline still produced vulnerability findings. I documented those remaining risks rather than treating passing tests or the absence of a new library as proof that the application was fully secure.
+
+### What resources, tools, and coding practices will help me in future assignments or tasks?
+
+Java MessageDigest, keytool, Maven, JUnit, Spring Boot configuration, and OWASP Dependency-Check were useful tools. NIST publications helped distinguish hashing from encryption, while Oracle documentation and OWASP guidance supported the implementation and review. I would continue using standard cryptographic APIs, explicit UTF-8 encoding, small classes with clear responsibilities, repeatable tests, and documented risk decisions. Running tests and dependency checks during the build would help identify regressions and newly disclosed vulnerabilities earlier.
+
+### What could I show future employers from this assignment?
+
+I could show this report as evidence that I can connect a client's security requirements to implementation choices and verification results. It includes the checksum implementation, certificate and HTTPS evidence, passing test results, and a review of dependency findings. It also shows that I can explain the limits of a development demonstration and identify the work needed for production readiness. That combination demonstrates practical Java security skills, testing discipline, and the ability to communicate technical risk clearly.
